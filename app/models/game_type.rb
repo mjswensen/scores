@@ -3,6 +3,4 @@ class GameType
 
   key :name, String
 
-  many :rank
-
 end

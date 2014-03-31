@@ -1,9 +1,9 @@
 class Game
   include MongoMapper::Document
 
+  key :game_type, ObjectId
   key :date, Time
 
-  belongs_to :game_type
-  many :participant
+  many :participants
 
 end

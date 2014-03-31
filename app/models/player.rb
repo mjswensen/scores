@@ -5,7 +5,6 @@ class Player
   key :nickname, String
   key :last_name, String
 
-  many :rank
-  belongs_to :participant
+  many :ranks
 
 end

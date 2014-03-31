@@ -1,8 +1,7 @@
 class Participant
   include MongoMapper::EmbeddedDocument
 
-  key :score, Int
-
-  many :player, :in => :players
+  key :score, Integer
+  key :players, Set
 
 end
