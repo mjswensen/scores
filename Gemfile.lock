@@ -109,5 +109,5 @@ DEPENDENCIES
   mongo
   mongo_mapper!
   rails (= 4.0.3)
-  trueskill (~> 1.0.0)
+  trueskill
   twitter-bootstrap-rails
