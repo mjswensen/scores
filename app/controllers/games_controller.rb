@@ -1,34 +1,63 @@
 class GamesController < ApplicationController
-  # return a JSON object of all the games
+
+  # Returns to the client all games.
   def index
-    render :json => Game.all.to_json
+    render :json => Game.all().to_json
   end
-  
-  # return a JSON object of all games of a specified game type
+
+  # Returns to the client a specific game.
   def show
-  	# check to see if search is by date or by game_type, and respond accordingly
-  	if Game.where(game_type: params[:id]).count > 0
-      render :json => Game.where(game_type: params[:id])
-    else
-      begin_time = Time.parse(params[:id]).beginning_of_day
-      end_time = Time.parse(params[:id]).end_of_day
-      render :json => Game.where(:date.gte => begin_time, :date.lte => end_time)
-      # render :json => Game.where(date: params[:date])
+    render :json => Game.find(params[:id])
+  end
+
+  # Creates a new game. TODO: still working on this.
+  def create
+    # participants = JSON.parse params[:participants]
+    # render :json => participants.to_json
+    # game = Game.create({
+    #   :game_type => params[:game_type],
+    #   :date => Time.new,
+    #   :participants => participants.map { |participant|
+    #     Participant.new({
+    #       :score => participant[:score],
+    #       :players => participant[:players].map { |player| ObjectId.new(player) }
+    #     })
+    #   }
+    # })
+    # participants.map { |participant|
+      # render :text => participant[:players].to_json and return
+      # participant[:players].map { |player|
+      #   render :json => player.to_json and return
+      # }
+      # render :json => participant.to_json and return
+    # }
+    # render :json => game.to_json
+    # render :json => params
+    render :nothing => true, :status => :not_implemented
+  end
+
+  # Updates the details of a game. Not implemented in this iteration.
+  def update
+    # 1. Rewind the effects of this game on rankings.
+    # 2. Save the changes to the game.
+    # 3. Replay the game (and all following) to properly calculate rankings.
+    render :nothing => true, :status => :not_implemented
+  end
+
+  def by_game_type
+    render :json => Game.where(game_type: params[:game_type_id])
+  end
+
+  # Returns to the client all of the games that took place on
+  # the day of the provided datetime.
+  def by_day
+    require 'time'
+    begin
+      time = Time.parse(params[:datetime])
+      render :json => Game.where(:date.gte => time.beginning_of_day, :date.lte => time.end_of_day)
+    rescue
+      render :text => 'Error parsing datetime.', :status => :bad_request
     end
   end
-  
-  # create a new game for a given gametype
-  def create
-  	participants = params[:participants]
-    game = Game.create(
-      :game_type => params[:game_type],
-      :date => Time.now,
-      :participants => participants.each{|participant|
-      	
-      }
-    )
-  end
-  
-  # update a specific game
 
 end

@@ -8,6 +8,8 @@ Scores::Application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'games/game_type/:game_type_id' => 'games#by_game_type'
+  get 'games/day/:datetime' => 'games#by_day'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
