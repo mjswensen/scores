@@ -13,8 +13,6 @@ gem 'angularjs-rails'
 
 gem 'jquery-rails'
 
-gem 'twitter-bootstrap-rails'
-
 gem 'trueskill'
 
 # Defaults listed below. We can remove them once we deem them unneccesary.
