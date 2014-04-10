@@ -10,30 +10,22 @@ class GamesController < ApplicationController
     render :json => Game.find(params[:id])
   end
 
-  # Creates a new game. TODO: still working on this.
+  # Creates a new game. TODO: add ranking algorithm.
   def create
-    # participants = JSON.parse params[:participants]
-    # render :json => participants.to_json
-    # game = Game.create({
-    #   :game_type => params[:game_type],
-    #   :date => Time.new,
-    #   :participants => participants.map { |participant|
-    #     Participant.new({
-    #       :score => participant[:score],
-    #       :players => participant[:players].map { |player| ObjectId.new(player) }
-    #     })
-    #   }
-    # })
-    # participants.map { |participant|
-      # render :text => participant[:players].to_json and return
-      # participant[:players].map { |player|
-      #   render :json => player.to_json and return
-      # }
-      # render :json => participant.to_json and return
-    # }
-    # render :json => game.to_json
-    # render :json => params
-    render :nothing => true, :status => :not_implemented
+    participants = JSON.parse(params[:participants], :symbolize_names => true)
+    game = Game.create({
+      :game_type => BSON::ObjectId(params[:game_type]),
+      :date => Time.new, # TODO: can this be a default in the model?
+      :participants => participants.map { |participant|
+        Participant.new({
+          :score => participant[:score],
+          :players => participant[:players].map { |player|
+            BSON::ObjectId(player)
+          }
+        })
+      }
+    })
+    render :json => game.to_json
   end
 
   # Updates the details of a game. Not implemented in this iteration.
@@ -44,6 +36,7 @@ class GamesController < ApplicationController
     render :nothing => true, :status => :not_implemented
   end
 
+  # Returns to the client all of the games of the given game type.
   def by_game_type
     render :json => Game.where(game_type: params[:game_type_id])
   end
