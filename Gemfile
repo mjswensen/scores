@@ -3,6 +3,8 @@ ruby '2.1.1'
 
 gem 'rails', '4.0.3'
 
+gem 'bson_ext'
+
 gem 'mongo'
 
 gem 'mongo_mapper', :git => "git://github.com/mongomapper/mongomapper.git", :tag => "v0.13.0.beta2"
