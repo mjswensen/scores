@@ -22,8 +22,6 @@ Scores::Application.routes.draw do
 
   get 'application/populateDb'
 
-  get 'player/deactivate'
-
   # Example resource route with options:
   #   resources :products do
   #     member do
