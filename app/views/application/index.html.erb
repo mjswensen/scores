@@ -1,2 +1,133 @@
-<h1>Hello, world!</h1>
-<p>This will be replaced with lots of JavaScript that will be in charge of rendering the HTML.</p>
+<html>
+<head>
+	<title>Scores</title>
+	<%= stylesheet_link_tag "stylesheets/main" %>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<h1 class="column">Scores</h1>
+			<button id="add_player" type="button">Add Player</button>
+		</header>
+		<section id="matches" class="column">
+			<h2>Record Match</h2>
+			<form action="" method="post">
+				<label for="game_type">Game Type:</label>
+				<select id="game_type"></select>
+				<h3>Participants</h3>
+					<label for="player1">Player 1:</label>
+					<select id="player1"></select><br>
+					<label for="player2">Player 2:</label>
+					<select id="player2"></select>
+				<h3>Final Score</h3>
+					<div class="versus column">
+						<label for="player1_score">Player 1</label><br>
+						<input id="player1_score" type="number" min="0" value="0">
+					</div>
+					<span class="versus">VS.</span>
+					<div class="versus column">
+						<label for="player2_score">Player 2</label><br>
+						<input id="player2_score" type="number" min="0" value="0"><br>
+					</div>
+					<div id="buttons">
+						<input id="record_match" type="submit" value="Record Match">
+						<input type="reset" value="reset">
+					</div>
+			</form>
+		</section>
+		<section id="leaders" class="column">
+			<h2>Leaderboard</h2>
+			<label for="game_type_leader">Game Type:</label>
+			<select id="game_type_leader">Add Player</select>
+			<br><br>
+			<table>
+				<thead>
+					<tr>
+						<th id="rank_th">Rank</th>
+						<th>Name</th>
+						<th id="score_th">Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+					<tr>
+						<td>data</td>
+						<td>data</td>
+						<td>data</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<footer>
+			Scores Inc.<br>
+			Copyright 2014<br>
+			Matthew Swensen | Roy Matsunaga | Jane Thomas | Morgan Young 
+		</footer>
+		<section id="modal">
+			<div id="dialogue">
+				<header>
+					<h2>Add a Player</h2>
+					<button id="cancel"type="button">X</button>
+				</header>
+				<form action="" method="post">
+					<label for="first_name">First Name:</label>
+					<input id="first_name" type="text" placeholder="First name..."><br>
+					<label for="nick_name">Nick Name:</label>
+					<input id="nick_name" type="text" placeholder="Nick name..."><br>
+					<label for="last_name">Last Name:</label>
+					<input id="last_name" type="text" placeholder="Last name..."><br>
+					<div id="player_buttons" class="buttons">
+						<input id="record_player" type="submit" value="Add Player">
+						<input type="reset" value="reset">
+					</div>
+				</form>
+			</div>
+		</section>
+	</div>
+
+<!-- ********** SCRIOTS ********** -->
+<%= javascript_include_tag "javascripts/modal" %>
+<!-- <script src="scripts/modal.js"></script> -->
+
+</body>
+</html>
