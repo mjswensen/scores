@@ -15,6 +15,8 @@ gem 'jquery-rails'
 
 gem 'trueskill'
 
+gem 'rails_12factor', group: :production
+
 # Defaults listed below. We can remove them once we deem them unneccesary.
 
 # Use SCSS for stylesheets
