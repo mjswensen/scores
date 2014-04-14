@@ -1,5 +1,6 @@
 $(function ()
 {
+	
 	//populates the game types dropdowns
 	$.getJSON( "game_types", function(json) 
 	{
@@ -46,6 +47,29 @@ $(function ()
 		console.log( "players failed to load" );
 	});
 
+	// populates the ranking table
+	// $.getJSON( "players", function(json) 
+	// {
+	// 	var values = [];
+
+	//   	json.forEach(function (item) 
+	//   	{
+	//   		values.push('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
+	//   	});
+
+	//   	var html = values.join("");		
+
+	//   	$("#player1").html(html);
+	//   	$("#player2").html(html);
+
+	//   	console.log( "players load success" );
+	// })
+
+	// .fail( function () 
+	// {
+	// 	console.log( "players failed to load" );
+	// });
+	
 	//create a new game in the DB
 	$("#new_game_form").submit( function(event)
 	{
@@ -89,9 +113,11 @@ $(function ()
 
 		var player_form = $(this);
 
-		$.post(player_form.attr("action"), {first_name: $("#first_name").val(), nickname: $("#nickname").val(), last_name: $("#last_name").val()}, function ()
+		$.post(player_form.attr("action"), {first_name: $("#first_name").val(), nickname: $("#nickname").val(), last_name: $("#last_name").val()}, function (json)
 		{
-			//TODO: update rankings based on new player
+			// $("#player1").children().show();
+
+			// $('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>')
 
 			console.log( "player created" );
 		})
