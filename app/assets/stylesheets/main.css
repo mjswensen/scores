@@ -219,6 +219,12 @@ span.versus
 	margin-top: -72;
 }
 
+#same_id
+{
+	display: none;
+	color: red;
+}
+
 .column
 {
 	display: inline-block;
