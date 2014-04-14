@@ -94,18 +94,24 @@ $(function ()
 
 		var pars = JSON.stringify(a);
 
-		$.post(game_form.attr("action"), {game_type: type, participants: pars}, function ()
+		if (p1.name == p2.name)
 		{
-			//TODO: update rankings based on new game
-
-			console.log( "game created" );
-		})
-
-		.fail( function () 
+			$('#same_id').show();
+		} 
+		else
 		{
-			console.log( "game not created" );
-		});
+			$.post(game_form.attr("action"), {game_type: type, participants: pars}, function ()
+			{
+				//TODO: update rankings based on new game
 
+				console.log( "game created" );
+			})
+
+			.fail( function () 
+			{
+				console.log( "game not created" );
+			});
+		}
 	});
 
 	//create a new player in the DB
@@ -135,33 +141,13 @@ $(function ()
 		});
 	});
 
-	// remove selected player from other drop down list
+	// hide the same_id error message
 	$("#player1").on("change", function() {
-		hidePlayer("#player1", "#player2");
+		$("same_id").hide();
 	});
 
+	// hide the same_id error message
 	$("#player2").on("change", function() {
-		hidePlayer("#player2", "#player1");
+		$("same_id").hide();
 	});
-
-	// function to hide player from other drop down
-	function hidePlayer(id1, id2) {
-		// unhide all names
-
-		// get the value of the selected player
-		var player1 = $(id1).val();
-		// get the players from the other list
-		var players2 = [];
-		$(id2).children().each(function() { 
-		    players2.push( $(this).attr('value') );
-		});
-		// remove the player from the other list
-		for (var i = 0; i < players2.length; i++)
-		{
-			if (player1 == players2[i])
-			{
-				$(id2 + " option[value='" + player1 + "']").remove();
-			}
-		}
-	}
 });
