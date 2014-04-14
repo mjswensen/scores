@@ -29,6 +29,8 @@ $(function ()
 	{
 		var values = [];
 
+		values.push('<option value="" disabled selected>Select your option...</option>');
+
 	  	json.forEach(function (item) 
 	  	{
 	  		values.push('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
@@ -115,9 +117,14 @@ $(function ()
 
 		$.post(player_form.attr("action"), {first_name: $("#first_name").val(), nickname: $("#nickname").val(), last_name: $("#last_name").val()}, function (json)
 		{
-			// $("#player1").children().show();
-
-			// $('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>')
+			//TODO: get full list of names (even if some have been removed)
+			
+			//Adds new player to selects
+			json.forEach(function (item) 
+	  		{
+				$('#player1').append('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
+				$('#player2').append('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
+			});
 
 			console.log( "player created" );
 		})
