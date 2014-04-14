@@ -109,7 +109,7 @@ $(function ()
 
 			.fail( function () 
 			{
-				console.log( "game not created" );
+				alert("Game not created.  Required fields missing.");
 			});
 		}
 	});
@@ -134,7 +134,7 @@ $(function ()
 
 		.fail( function () 
 		{
-			console.log( "player not created" );
+			alert("Player not created, required fields missing.");
 		});
 	});
 
