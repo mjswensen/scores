@@ -78,16 +78,16 @@ $(function ()
 		var game_form = $(this);
 
 		var a = [];
-		var type = $("#game_type").value();
+		var type = $("#game_type").val();
 
 		var p1 = new Object();
-		p1.score = $("#part1_score").value();
-		p1.players = [$("#player1").value()]; //TODO: will eventually need to change to add multiple
+		p1.score = $("#part1_score").val();
+		p1.players = [$("#player1").val()]; //TODO: will eventually need to change to add multiple
 		a.push(p1);
 
 		var p2 = new Object();
-		p2.score = $("#part2_score").value();
-		p2.players = [$("#player2").value()]; //TODO: will eventually need to change to add multiple players 
+		p2.score = $("#part2_score").val();
+		p2.players = [$("#player2").val()]; //TODO: will eventually need to change to add multiple players 
 		a.push(p2);
 
 		var pars = JSON.stringify(a);
@@ -129,33 +129,32 @@ $(function ()
 	});
 
 	// remove selected player from other drop down list
-	$("#player1").on("select", function() {
-		var player1 = $(this).val();
-		// get the second player list
+	$("#player1").on("change", function() {
+		hidePlayer("#player1", "#player2");
+	});
 
+	$("#player2").on("change", function() {
+		hidePlayer("#player2", "#player1");
 	});
 
 	// function to hide player from other drop down
 	function hidePlayer(id1, id2) {
 		// unhide all names
 
-		$(id1).on("select", function() {
-			// get the value of the selected player
-			var player1 = $(this).val();
-			// get the players from the other list
-			var players2 = [];
-			var values = [];
-			$(id2).each(function() { 
-			    players2.push( $(this).attr('value') );
-			});
-			// remove the player from the other list
-			for (String player : players2)
-			{
-				if (player1 == player2)
-				{
-					$("#" + id2 + " option[value='" + player1 + "'']").remove();
-				}
-			}
+		// get the value of the selected player
+		var player1 = $(id1).val();
+		// get the players from the other list
+		var players2 = [];
+		$(id2).children().each(function() { 
+		    players2.push( $(this).attr('value') );
 		});
-	};
+		// remove the player from the other list
+		for (var i = 0; i < players2.length; i++)
+		{
+			if (player1 == players2[i])
+			{
+				$(id2 + " option[value='" + player1 + "']").remove();
+			}
+		}
+	}
 });
