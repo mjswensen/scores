@@ -1,12 +1,11 @@
-
 $(function ()
 {
 	//populates the game types dropdowns
-	$.getJSON( "[url]/game_types", function(json) 
+	$.getJSON( "game_types", function(json) 
 	{
 		var values = [];
 
-	  	$.each(json.items, function (item) 
+	  	json.forEach(function (item) 
 	  	{
 	  		values.push('<option value="' + item.id + '">' + item.name + '</option>');
 	  	});
@@ -25,11 +24,11 @@ $(function ()
 	});
 
 	// populates the players dropdowns
-	$.getJSON( "[url]/players", function(json) 
+	$.getJSON( "players", function(json) 
 	{
 		var values = [];
 
-	  	$.each(json.items, function (item) 
+	  	json.forEach(function (item) 
 	  	{
 	  		values.push('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
 	  	});
@@ -83,14 +82,14 @@ $(function ()
 
 	});
 
-	//create a new game in the DB
+	//create a new player in the DB
 	$("#new_player_form").submit( function(event)
 	{
 		event.preventDefault();
 
 		var player_form = $(this);
 
-		$.post(player_form.attr("action"), player_form.serialize(), function ()
+		$.post(player_form.attr("action"), {first_name: $("#first_name").val(), nickname: $("#nickname").val(), last_name: $("#last_name").val()}, function ()
 		{
 			//TODO: update rankings based on new player
 
@@ -103,6 +102,34 @@ $(function ()
 		});
 	});
 
+	// remove selected player from other drop down list
+	$("#player1").on("select", function() {
+		var player1 = $(this).val();
+		// get the second player list
+
+	});
+
+	// function to hide player from other drop down
+	function hidePlayer(id1, id2) {
+		// unhide all names
+
+		$(id1).on("select", function() {
+			// get the value of the selected player
+			var player1 = $(this).val();
+			// get the players from the other list
+			var players2 = [];
+			var values = [];
+			$(id2).each(function() { 
+			    players2.push( $(this).attr('value') );
+			});
+			// remove the player from the other list
+			for (String player : players2)
+			{
+				if (player1 == player2)
+				{
+					$("#" + id2 + " option[value='" + player1 + "'']").remove();
+				}
+			}
+		});
+	};
 });
-
-

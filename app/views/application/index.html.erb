@@ -18,7 +18,7 @@
 		</header>
 		<section id="matches" class="column">
 			<h2>Record Match</h2>
-			<form id="new_game_form" action="[link]/games" method="post">
+			<form id="new_game_form" action="games" method="post">
 				<label for="game_type">Game Type:</label>
 				<select id="game_type"></select>
 				<h3>Participants</h3>
@@ -90,11 +90,11 @@
 					<h2>Add a Player</h2>
 					<button id="cancel"type="button">X</button>
 				</header>
-				<form id="new_player_form" action="[link]/players" method="post">
+				<form id="new_player_form" action="players" method="post">
 					<label for="first_name">First Name:</label>
 					<input id="first_name" type="text" placeholder="First name..."><br>
-					<label for="nick_name">Nick Name:</label>
-					<input id="nick_name" type="text" placeholder="Nick name..."><br>
+					<label for="nickname">Nick Name:</label>
+					<input id="nickname" type="text" placeholder="Nick name..."><br>
 					<label for="last_name">Last Name:</label>
 					<input id="last_name" type="text" placeholder="Last name..."><br>
 					<div id="player_buttons" class="buttons">
@@ -108,7 +108,7 @@
 
 <!-- ********** SCRIPTS ********** -->
 
-<!-- <%= javascript_include_tag "scores_ajax" %> -->
+<%= javascript_include_tag "scores_ajax" %>
 <%= javascript_include_tag "modal" %>
 
 </body>
