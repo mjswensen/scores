@@ -138,6 +138,11 @@ $(function ()
 		});
 	});
 
+	$("#game_reset").on('click', function()
+	{
+		$("#same_id").hide();
+	});
+
 	// hide the same_id error message
 	$("#player1").on("change", function() {
 		$("#same_id").hide();
