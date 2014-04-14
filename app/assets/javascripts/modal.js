@@ -2,7 +2,7 @@ $(function()
 {
 	$('#add_player').on('click', function ()
 	{
-		$('#modal').show();
+		$('#add_player_modal').show();
 	});
 
 	// $('#modal').on('click', function ()
@@ -12,7 +12,7 @@ $(function()
 
 	$('#cancel').on('click', function ()
 	{
-		$('#modal').hide();
+		$('#add_player_modal').hide();
 	});
 
 	$(window).resize(function ()
@@ -31,5 +31,3 @@ $(function()
 		$('#dialogue').css("left", dLeft + "px");
 	}
 });
-
-

@@ -103,6 +103,12 @@ $(function ()
 			$.post(game_form.attr("action"), {game_type: type, participants: pars}, function ()
 			{
 				//TODO: update rankings based on new game
+				$("#match_confirmation").show();
+
+				$('.ok').on('click', function ()
+				{
+					$('#match_confirmation').hide();
+				});
 
 				console.log( "game created" );
 			})
@@ -128,7 +134,15 @@ $(function ()
 			//Adds new player to selects
 			$('#player1').append('<option value="' + json.id + '">' + json.first_name + ' \"' + json.nickname + '\" ' + json.last_name + '</option>');
 			$('#player2').append('<option value="' + json.id + '">' + json.first_name + ' \"' + json.nickname + '\" ' + json.last_name + '</option>');
-			
+
+			$('#add_player_model').hide();
+
+			$("#player_confirmation").show();
+			$('.ok').on('click', function ()
+			{
+				$('#player_confirmation').hide();
+			});
+
 			console.log( "player created" );
 		})
 
