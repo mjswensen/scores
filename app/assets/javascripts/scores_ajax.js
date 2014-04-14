@@ -94,7 +94,7 @@ $(function ()
 
 		var pars = JSON.stringify(a);
 
-		if (p1.name == p2.name)
+		if ($("#player1").val() == $("#player2").val())
 		{
 			$('#same_id').show();
 		} 
