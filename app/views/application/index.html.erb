@@ -16,69 +16,67 @@
 			<h1 class="column">Scores</h1>
 			<button id="add_player" type="button">Add Player</button>
 		</header>
-		<section id="matches" class="column">
-			<h2>Record Match</h2>
-			<form id="new_game_form" action="[link]/games" method="post">
-				<label for="game_type">Game Type:</label>
-				<select id="game_type"></select>
-				<h3>Participants</h3>
-					<label for="player1">Player 1:</label>
-					<select id="player1"></select><br>
-					<label for="player2">Player 2:</label>
-					<select id="player2"></select>
-				<h3>Final Score</h3>
-					<div class="versus column">
-						<label for="part1_score">Player 1</label><br>
-						<input id="part1_score" type="number" min="0" value="0">
-					</div>
-					<span class="versus">VS.</span>
-					<div class="versus column">
-						<label for="part2_score">Player 2</label><br>
-						<input id="part2_score" type="number" min="0" value="0"><br>
-					</div>
-					<div class="buttons">
-						<input id="record_match" type="submit" value="Record Match">
-						<input type="reset" value="reset">
-					</div>
-			</form>
-		</section>
-		<section id="leaders" class="column">
-			<h2>Leaderboard</h2>
-			<label for="game_type_leader">Game Type:</label>
-			<select id="game_type_leader">Add Player</select>
-			<br><br>
-			<table>
-				<thead>
-					<tr>
-						<th id="rank_th">Rank</th>
-						<th>Name</th>
-						<th id="score_th">Score</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-				</tbody>
-			</table>
-		</section>
+		<div id="float_container">
+			<section id="matches" class="column">
+				<h2>Record Match</h2>
+				<form id="new_game_form" action="games" method="post">
+					<label for="game_type">Game Type:</label>
+					<select id="game_type"></select>
+					<h3>Participants</h3>
+						<label for="player1">Player 1:</label>
+						<select id="player1" required></select><br>
+						<label for="player2">Player 2:</label>
+						<select id="player2" required></select><br>
+						<span id="same_id">Players 1 and 2 are the same.</span>
+					<h3>Final Score</h3>
+						<div class="versus column">
+							<label for="part1_score">Player 1</label><br>
+							<input id="part1_score" type="number" min="0"required>
+						</div>
+						<span class="versus">VS.</span>
+						<div class="versus column">
+							<label for="part2_score">Player 2</label><br>
+							<input id="part2_score" type="number" min="0" required><br>
+						</div>
+						<div class="buttons">
+							<input id="record_match" type="submit" value="Record Match">
+							<input id="game_reset" type="reset" value="reset">
+						</div>
+				</form>
+			</section>
+			<section id="leaders" class="column">
+				<h2>Leaderboard</h2>
+				<label for="game_type_leader">Game Type:</label>
+				<select id="game_type_leader">Add Player</select>
+				<br><br>
+				<table>
+					<thead>
+						<tr>
+							<th id="rank_th">Rank</th>
+							<th>Name</th>
+							<th id="score_th">Score</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>data</td>
+							<td>data</td>
+							<td>data</td>
+						</tr>
+						<tr>
+							<td>data</td>
+							<td>data</td>
+							<td>data</td>
+						</tr>
+						<tr>
+							<td>data</td>
+							<td>data</td>
+							<td>data</td>
+						</tr>
+					</tbody>
+				</table>
+			</section>
+		</div>
 		<footer>
 			Scores Inc.<br>
 			Copyright 2014<br>
@@ -90,13 +88,13 @@
 					<h2>Add a Player</h2>
 					<button id="cancel"type="button">X</button>
 				</header>
-				<form id="new_player_form" action="[link]/players" method="post">
+				<form id="new_player_form" action="players" method="post">
 					<label for="first_name">First Name:</label>
-					<input id="first_name" type="text" placeholder="First name..."><br>
-					<label for="nick_name">Nick Name:</label>
-					<input id="nick_name" type="text" placeholder="Nick name..."><br>
+					<input id="first_name" type="text" placeholder="First name..." required><br>
+					<label for="nickname">Nick Name:</label>
+					<input id="nickname" type="text" placeholder="Nick name..." required><br>
 					<label for="last_name">Last Name:</label>
-					<input id="last_name" type="text" placeholder="Last name..."><br>
+					<input id="last_name" type="text" placeholder="Last name..." required><br>
 					<div id="player_buttons" class="buttons">
 						<input id="record_player" type="submit" value="Add Player">
 						<input type="reset" value="reset">
@@ -108,7 +106,7 @@
 
 <!-- ********** SCRIPTS ********** -->
 
-<!-- <%= javascript_include_tag "scores_ajax" %> -->
+<%= javascript_include_tag "scores_ajax" %>
 <%= javascript_include_tag "modal" %>
 
 </body>

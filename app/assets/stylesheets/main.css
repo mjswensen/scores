@@ -172,7 +172,14 @@ span.versus
 
 #leaders
 {
-	margin-left: 16px;
+	float: right;
+}
+
+#float_container::after
+{
+	display:block;
+	clear:both;
+	content: "";
 }
 
 #modal
@@ -210,6 +217,12 @@ span.versus
 	height: 25px;
 	margin-right: -22;
 	margin-top: -72;
+}
+
+#same_id
+{
+	display: none;
+	color: red;
 }
 
 .column
