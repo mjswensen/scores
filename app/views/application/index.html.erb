@@ -1,8 +1,14 @@
 <html>
 <head>
 	<title>Scores</title>
+	<meta name="author" content="Roy Matsunaga"/>
+	<meta name="author" content="Matthew Swensen"/>
+	<meta name="author" content="Jane Thomas"/>
+	<meta name="author" content="Morgan Young"/>
+	<meta name="description" content="An app designed to keep track of all office sport scores"/>
+	<meta charset="utf-8"/>
 	<%= stylesheet_link_tag "main" %>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -12,7 +18,7 @@
 		</header>
 		<section id="matches" class="column">
 			<h2>Record Match</h2>
-			<form action="" method="post">
+			<form id="new_game_form" action="[link]/games" method="post">
 				<label for="game_type">Game Type:</label>
 				<select id="game_type"></select>
 				<h3>Participants</h3>
@@ -22,15 +28,15 @@
 					<select id="player2"></select>
 				<h3>Final Score</h3>
 					<div class="versus column">
-						<label for="player1_score">Player 1</label><br>
-						<input id="player1_score" type="number" min="0" value="0">
+						<label for="part1_score">Player 1</label><br>
+						<input id="part1_score" type="number" min="0" value="0">
 					</div>
 					<span class="versus">VS.</span>
 					<div class="versus column">
-						<label for="player2_score">Player 2</label><br>
-						<input id="player2_score" type="number" min="0" value="0"><br>
+						<label for="part2_score">Player 2</label><br>
+						<input id="part2_score" type="number" min="0" value="0"><br>
 					</div>
-					<div id="buttons">
+					<div class="buttons">
 						<input id="record_match" type="submit" value="Record Match">
 						<input type="reset" value="reset">
 					</div>
@@ -70,31 +76,6 @@
 						<td>data</td>
 						<td>data</td>
 					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
-					<tr>
-						<td>data</td>
-						<td>data</td>
-						<td>data</td>
-					</tr>
 				</tbody>
 			</table>
 		</section>
@@ -109,7 +90,7 @@
 					<h2>Add a Player</h2>
 					<button id="cancel"type="button">X</button>
 				</header>
-				<form action="" method="post">
+				<form id="new_player_form" action="[link]/players" method="post">
 					<label for="first_name">First Name:</label>
 					<input id="first_name" type="text" placeholder="First name..."><br>
 					<label for="nick_name">Nick Name:</label>
@@ -125,9 +106,10 @@
 		</section>
 	</div>
 
-<!-- ********** SCRIOTS ********** -->
+<!-- ********** SCRIPTS ********** -->
+
+<!-- <%= javascript_include_tag "scores_ajax" %> -->
 <%= javascript_include_tag "modal" %>
-<!-- <script src="scripts/modal.js"></script> -->
 
 </body>
 </html>
