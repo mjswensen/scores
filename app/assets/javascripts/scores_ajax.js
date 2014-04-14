@@ -120,12 +120,9 @@ $(function ()
 			//TODO: get full list of names (even if some have been removed)
 			
 			//Adds new player to selects
-			json.forEach(function (item) 
-	  		{
-				$('#player1').append('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
-				$('#player2').append('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
-			});
-
+			$('#player1').append('<option value="' + json.id + '">' + json.first_name + ' \"' + json.nickname + '\" ' + json.last_name + '</option>');
+			$('#player2').append('<option value="' + json.id + '">' + json.first_name + ' \"' + json.nickname + '\" ' + json.last_name + '</option>');
+			
 			console.log( "player created" );
 		})
 
