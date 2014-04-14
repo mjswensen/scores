@@ -24,12 +24,10 @@ class ApplicationController < ActionController::Base
       :last_name => 'Matsunaga',
       :ranks => [ # TODO: modify the player constructor to query DB for all game types, and give them the default rank for each game type.
         Rank.new({
-          :game_type => foosball.id,
-          :rank => 10
+          :game_type => foosball.id
         }),
         Rank.new({
-          :game_type => ping_pong.id,
-          :rank => 10
+          :game_type => ping_pong.id
         })
       ]
     })
@@ -40,12 +38,10 @@ class ApplicationController < ActionController::Base
       :last_name => 'Young',
       :ranks => [
         Rank.new({
-          :game_type => foosball.id,
-          :rank => 10
+          :game_type => foosball.id
         }),
         Rank.new({
-          :game_type => ping_pong.id,
-          :rank => 10
+          :game_type => ping_pong.id
         })
       ]
     })
@@ -56,12 +52,10 @@ class ApplicationController < ActionController::Base
       :last_name => 'Swensen',
       :ranks => [
         Rank.new({
-          :game_type => foosball.id,
-          :rank => 10
+          :game_type => foosball.id
         }),
         Rank.new({
-          :game_type => ping_pong.id,
-          :rank => 10
+          :game_type => ping_pong.id
         })
       ]
     })
@@ -72,50 +66,48 @@ class ApplicationController < ActionController::Base
       :last_name => 'Maloish',
       :ranks => [
         Rank.new({
-          :game_type => foosball.id,
-          :rank => 10
+          :game_type => foosball.id
         }),
         Rank.new({
-          :game_type => ping_pong.id,
-          :rank => 10
+          :game_type => ping_pong.id
         })
       ]
     })
 
-    # Create and save games
+    # # Create and save games
 
-    Game.create({
-      :game_type => foosball.id,
-      :date => Time.new,
-      :participants => [
-        Participant.new({
-          :score => 3,
-          :players => [ matt.id ]
-        }),
-        Participant.new({
-          :score => 5,
-          :players => [ morgan.id ]
-        })
-      ]
-    })
+    # Game.create({
+    #   :game_type => foosball.id,
+    #   :date => Time.new,
+    #   :participants => [
+    #     Participant.new({
+    #       :score => 3,
+    #       :players => [ matt.id ]
+    #     }),
+    #     Participant.new({
+    #       :score => 5,
+    #       :players => [ morgan.id ]
+    #     })
+    #   ]
+    # })
 
-    Game.create({
-      :game_type => ping_pong.id,
-      :date => Time.new,
-      :participants => [
-        Participant.new({
-          :score => 21,
-          :players => [ morgan.id, roy.id ]
-        }),
-        Participant.new({
-          :score => 15,
-          :players => [ matt.id, scoish.id ]
-        })
-      ]
-    })
+    # Game.create({
+    #   :game_type => ping_pong.id,
+    #   :date => Time.new,
+    #   :participants => [
+    #     Participant.new({
+    #       :score => 21,
+    #       :players => [ morgan.id, roy.id ]
+    #     }),
+    #     Participant.new({s
+    #       :score => 15,
+    #       :players => [ matt.id, scoish.id ]
+    #     })
+    #   ]
+    # })
 
-    # redirect_to :action => 'index'
-    render 'application/index'
+    redirect_to :action => 'index'
+    # render 'application/index'
 
   end
 end

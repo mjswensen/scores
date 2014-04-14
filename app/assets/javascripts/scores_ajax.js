@@ -94,7 +94,7 @@ $(function ()
 
 		var pars = JSON.stringify(a);
 
-		if (p1.name == p2.name)
+		if ($("#player1").val() == $("#player2").val())
 		{
 			$('#same_id').show();
 		} 
@@ -150,6 +150,11 @@ $(function ()
 		{
 			alert("Player not created, required fields missing.");
 		});
+	});
+
+	$("#game_reset").on('click', function()
+	{
+		$("#same_id").hide();
 	});
 
 	// hide the same_id error message
