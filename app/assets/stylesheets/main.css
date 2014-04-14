@@ -172,7 +172,14 @@ span.versus
 
 #leaders
 {
-	margin-left: 16px;
+	float: right;
+}
+
+#float_container::after
+{
+	display:block;
+	clear:both;
+	content: "";
 }
 
 #modal
