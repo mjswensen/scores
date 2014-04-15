@@ -49,29 +49,6 @@ $(function ()
 		console.log( "players failed to load" );
 	});
 
-	// populates the ranking table
-	// $.getJSON( "players", function(json)
-	// {
-	// 	var values = [];
-
-	//   	json.forEach(function (item)
-	//   	{
-	//   		values.push('<option value="' + item.id + '">' + item.first_name + ' \"' + item.nickname + '\" ' + item.last_name + '</option>');
-	//   	});
-
-	//   	var html = values.join("");
-
-	//   	$("#player1").html(html);
-	//   	$("#player2").html(html);
-
-	//   	console.log( "players load success" );
-	// })
-
-	// .fail( function ()
-	// {
-	// 	console.log( "players failed to load" );
-	// });
-
 	//create a new game in the DB
 	$("#new_game_form").submit( function(event)
 	{
@@ -111,6 +88,7 @@ $(function ()
 				});
 
 				console.log( "game created" );
+				renderRankTable();
 				game_form[0].reset();
 			})
 
@@ -167,4 +145,37 @@ $(function ()
 	$("#player2").on("change", function() {
 		$("#same_id").hide();
 	});
+
+	$('#game_type_leader').on('change', renderRankTable);
+
+	function renderRankTable() {
+
+		$.getJSON('players', function(data) {
+			var gameType = $('#game_type_leader').val(),
+				ranks = data.map(function(datum) {
+					var rankToDisplay;
+					datum.ranks.forEach(function(rank) {
+						if (rank.game_type == gameType) { rankToDisplay = rank.rank; }
+					});
+					return {
+						fullName: datum.first_name + ' "' + datum.nickname + '" ' + datum.last_name,
+						rank: rankToDisplay
+					};
+				}).sort(function(a, b) { return b.rank - a.rank; });
+			$('#leaderboard').empty();
+			ranks.forEach(function(rank, idx) {
+				$('#leaderboard').append(
+					$('<tr>')
+						.append($('<td>').text(idx + 1))
+						.append($('<td>').text(rank.fullName))
+						.append($('<td>').text(rank.rank))
+				);
+			});
+		});
+
+	}
+
+	// set up initial state of rank table
+	renderRankTable();
+
 });
