@@ -135,6 +135,7 @@ $(function ()
 
 			$("#add_player_modal").hide();
 			$("#new_player_form")[0].reset();
+			renderRankTable();
 
 			console.log( "player created" );
 
