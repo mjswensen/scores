@@ -6,6 +6,8 @@ $(function ()
 	{
 		var values = [];
 
+		values.push('<option value="" disabled selected>Select game type...</option>');
+
 	  	json.forEach(function (item)
 	  	{
 	  		values.push('<option value="' + item.id + '">' + item.name + '</option>');
@@ -29,7 +31,7 @@ $(function ()
 	{
 		var values = [];
 
-		values.push('<option value="" disabled selected>Select your option...</option>');
+		values.push('<option value="" disabled selected>Select player...</option>');
 
 	  	json.forEach(function (item)
 	  	{
@@ -40,6 +42,8 @@ $(function ()
 
 	  	$("#player1").html(html);
 	  	$("#player2").html(html);
+
+	  	renderRankTable();
 
 	  	console.log( "players load success" );
 	})
@@ -87,9 +91,17 @@ $(function ()
 					$('#match_confirmation').hide();
 				});
 
-				console.log( "game created" );
 				renderRankTable();
 				game_form[0].reset();
+
+				console.log( "game created" );
+
+				var dLeft = (window.innerWidth - $('#game_confirmation').outerWidth()) / 2.0;
+				$('#game_confirmation').css("left", dLeft + "px");
+				$('#game_confirmation').fadeIn(2500, function()
+				{
+					window.setTimeout(function() {$('#game_confirmation').fadeOut(2500)},4000);
+				});
 			})
 
 			.fail( function ()
@@ -123,6 +135,13 @@ $(function ()
 			});
 
 			console.log( "player created" );
+
+			var dLeft = (window.innerWidth - $('#player_confirmation').outerWidth()) / 2.0;
+			$('#player_confirmation').css("left", dLeft + "px");
+			$('#player_confirmation').fadeIn(2500, function()
+			{
+				window.setTimeout(function() {$('#player_confirmation').fadeOut(2500)},4000);
+			});
 		})
 
 		.fail( function ()

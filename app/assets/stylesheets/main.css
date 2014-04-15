@@ -168,32 +168,6 @@ span.versus
 	display: none;
 }
 
-#match_confirmation
-{
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 20;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.85);
-	border: none;
-	display: none;
-}
-
-#player_confirmation
-{
-	position: fixed;
-	top: 0px;
-	left: 0px;
-	z-index: 20;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.85);
-	border: none;
-	display: none;
-}
-
 #add_player, #cancel
 {
 	float: right;
@@ -245,6 +219,11 @@ span.versus
 	margin-top: -72;
 }
 
+#player_buttons
+{
+	margin: 0;
+}
+
 #same_id
 {
 	display: none;
@@ -270,7 +249,15 @@ span.versus
 	text-align: center;
 }
 
-#player_buttons
+.toast
 {
-	margin: 0;
+	background: steelblue;
+	display: inline-block;
+	position: absolute;
+	top: 52px;
+	padding: 4px 90px;
+	border-radius: 0px 0px 10px 10px;
+	border: solid white 2px;
+	color: white;
+	display: none;
 }
