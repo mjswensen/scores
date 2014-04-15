@@ -6,8 +6,6 @@ $(function ()
 	{
 		var values = [];
 
-		values.push('<option value="" disabled selected>Select game type...</option>');
-
 	  	json.forEach(function (item)
 	  	{
 	  		values.push('<option value="' + item.id + '">' + item.name + '</option>');
@@ -16,6 +14,7 @@ $(function ()
 	  	var html = values.join("");
 
 	  	$("#game_type").html(html);
+	  	$("#game_type").prepend('<option value="" disabled selected>Select game type...</option>');
 	  	$("#game_type_leader").html(html);
 
 	  	console.log( "game_type load success" );
@@ -133,6 +132,9 @@ $(function ()
 			{
 				$('#player_confirmation').hide();
 			});
+
+			$("#add_player_modal").hide();
+			$("#new_player_form")[0].reset();
 
 			console.log( "player created" );
 
